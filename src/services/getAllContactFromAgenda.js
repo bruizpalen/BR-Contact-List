@@ -1,5 +1,5 @@
 export const getAllContacts = () => {
-    return fetch(`https://playground.4geeks.com/apis/fake/contact/agenda/personal`)
+    return fetch(`https://playground.4geeks.com/apis/fake/contact/agenda/usuario24`)
         .then(res => {
             if (!res.ok) {
                 throw Error('Request Error');
@@ -7,7 +7,7 @@ export const getAllContacts = () => {
             return res.json();
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
         
             return res
                 })
