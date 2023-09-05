@@ -3,6 +3,7 @@ import { getAllContacts } from "../services/getAllContactFromAgenda";
 import { useState, useEffect } from "react";
 import addNewContact from "../services/addNewContact";
 import removeContact from "../services/removeContact";
+import editContact from "../services/editContact";
 //Create context
 
 const AppContext = createContext();
@@ -10,6 +11,14 @@ const AppContext = createContext();
 //Provider
 export const ContextProvider = ({ children }) => {
   const [contacts, setContacts] = useState([]);
+
+  const editContactFromList = ({ full_name, email, address, phone, id }) => {
+    editContact({ full_name, email, address, phone, id });
+    getAllContacts().then((res) => {
+      setContacts(res);
+    });
+  };
+
   const updateContactList = () => {
     getAllContacts().then((res) => {
       setContacts(res);
@@ -37,6 +46,7 @@ export const ContextProvider = ({ children }) => {
     addNewContact,
     removeContactById,
     updateContactList,
+    editContactFromList,
   };
 
   return (

@@ -1,9 +1,8 @@
-const addNewContact = ({ full_name, email, agenda_slug, phone, address, id }) => {
+const addNewContact = ({ full_name, email, agenda_slug, phone, address}) => {
   const data = JSON.stringify({
     full_name: full_name,
     email: email,
     agenda_slug: agenda_slug,
-    id: id,
     address: address,
     phone: phone
   });
