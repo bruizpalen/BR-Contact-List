@@ -38,14 +38,38 @@ const CardContact = ({
   return (
     <>
       {modalEditOpen && (
-        <ModalDelete
+        <ModalEdit
           title="Edit contact"
-          content="Are you sure that you want to edit this contact?"
-          onCancel={handleCloseEditModal}
+          content="Are you sure that you want to delete the contact?"
+          onCancel={handleCloseModal}
           onConfirm={() => {
-            handleCloseEditModal();
+            // actions.removeContactById({ id: contactId });
+            handleCloseModal();
           }}
         />
+        //   <div className="d-flex flex-column justify-content-center align-items-center border p-2">
+        //     <p>Are you sure that you want to edit the contact?</p>
+        //     <div>
+        //       <Link to={`/edit/:${contactId}`}>
+        //         <button className="btn btn-success me-2">Confirm</button>
+        //       </Link>
+        //       <button
+        //         className="btn btn-danger"
+        //         onClick={() => handleCloseEditModal()}
+        //       >
+        //         Cancel
+        //       </button>
+        //     </div>
+        //     {/* <ModalDelete
+        //       title="Edit contact"
+        //       content="Are you sure that you want to edit this contact?"
+        //       onCancel={handleCloseEditModal}
+        //       onConfirm={() => {
+        //         <Link to={`/edit/:${contactId}`}></Link>;
+        //         handleCloseEditModal();
+        //       }}
+        //     /> */}
+        //   </div>
       )}
       {modalOpen && (
         <ModalDelete
