@@ -10,3 +10,8 @@
   align-items: center;
   z-index: 999;
 }
+
+.link {
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Set your desired text color */
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "../ModalDelete/ModalDelete.module.css"; // Import the CSS module
 import { Link } from "react-router-dom";
+import "../../index.css";
 
 const ModalEdit = ({ title, content, onCancel, onConfirm, contactId }) => {
   return (
@@ -12,13 +13,16 @@ const ModalEdit = ({ title, content, onCancel, onConfirm, contactId }) => {
           </div>
 
           <div className={classes.modalBody}>{content}</div>
+
           <div className="modal-footer d-flex justify-content-center mt-2">
             <button className="btn btn-danger me-3" onClick={onCancel}>
               Cancel
             </button>
 
             <button className={"btn btn-success"} onClick={onConfirm}>
-              <Link to={`/edit/:${contactId}`}>Confirm</Link>
+              <Link to={`/edit/${contactId}`} className="link">
+                Confirm
+              </Link>
             </button>
           </div>
         </div>

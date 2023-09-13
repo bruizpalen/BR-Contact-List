@@ -41,7 +41,8 @@ const CardContact = ({
         <ModalEdit
           title="Edit contact"
           content="Are you sure that you want to delete the contact?"
-          onCancel={handleCloseModal}
+          onCancel={handleCloseEditModal}
+          contactId={contactId}
           onConfirm={() => {
             // actions.removeContactById({ id: contactId });
             handleCloseModal();

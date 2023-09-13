@@ -15,38 +15,55 @@ const EditContactForm = () => {
   // useEffect(() => {
   //   actions.updateContactList();
   // }, []);
+  if (contacts.length === 0) {
+    return <div>Loading</div>;
+  }
 
-  console.log(contacts);
+  console.log(id);
+  console.log("Hello", contacts);
   // contacts.map((element, index) => {
   //   console.log(typeof Number(id), typeof element.id);
   //   Number(id) === element.id && console.log(element.full_name, index);
   // });
-  const indexToEdit = contacts.findIndex((contact) => {
-    contact.id === Number(id);
-
-    return contact.id;
+  let indexToEdit = null;
+  contacts.map((element) => {
+    if (element.id === Number(id)) {
+      indexToEdit = element.id;
+    }
   });
+
+  const targetContact = contacts.find((contact) => contact.id === indexToEdit);
+  console.log(targetContact.full_name);
   // console.log("Contact to edit", contacts[indexToEdit]);
   // Object.keys(contacts[indexToEdit]).map((element) => {
   //   console.log(element);
   // });
-  const [contactToEdit, setContactToEdit] = useState(contacts[indexToEdit]);
+
+  const [contactToEdit, setContactToEdit] = useState({
+    full_name: targetContact.full_name,
+    email: targetContact.email,
+    phone: targetContact.phone,
+    address: targetContact.address,
+  });
 
   const handleEditInput = (e) => {
     const { id: field, value } = e.target;
+    // Update only the field being edited while maintaining other field values
     setContactToEdit((prevContactToEdit) => ({
       ...prevContactToEdit,
       [field]: value,
     }));
-    console.log("Hello", contactToEdit);
   };
 
   const handleUpdateContact = (e) => {
     e.preventDefault();
-    console.log(contactToEdit);
-    actions.editContactFromList(contactToEdit);
+    // Create a copy of the original contact and update it with the edited values
+    const updatedContact = {
+      ...targetContact,
+      ...contactToEdit,
+    };
+    actions.editContactFromList(updatedContact);
   };
-  console.log(contactToEdit);
 
   return (
     <>
@@ -57,47 +74,36 @@ const EditContactForm = () => {
       <form className="mx-5" onSubmit={handleUpdateContact}>
         <Input
           id="full_name"
-          placeholder="Enter full name"
+          placeholder="Full name"
           type="text"
           label="Full name"
-          onChangeInput={(e) => handleEditInput(e, id)}
-          // value={contactToEdit.full_name}
-        ></Input>
-        {/* <label>Full name</label>
-        <input
+          onChangeInput={handleEditInput}
+          value={contactToEdit.full_name}
+        />
+        <Input
+          id="email"
+          placeholder="Email"
           type="text"
-          placeholder={contacts[indexToEdit].full_name}
-          className="form-control m-2"
-          // onChange={(e) => handleEditInfo(e, full_name)}
-          // value={store.contact[indexToEdit][full_name]}
-        ></input>
-
-        <label>Email</label>
-        <input
+          label="Email"
+          onChangeInput={handleEditInput}
+          value={contactToEdit.email}
+        />
+        <Input
+          id="phone"
+          placeholder="Phone"
           type="text"
-          placeholder={contacts[indexToEdit].email}
-          className="form-control m-2"
-          // onChange={(e) => handleEditInfo(e, full_name)}
-          // value={store.contact[indexToEdit][full_name]}
-        ></input>
-
-        <label>Phone</label>
-        <input
+          label="Phone"
+          onChangeInput={handleEditInput}
+          value={contactToEdit.phone}
+        />
+        <Input
+          id="address"
+          placeholder="Address"
           type="text"
-          placeholder={contacts[indexToEdit].phone}
-          className="form-control m-2"
-          // onChange={(e) => handleEditInfo(e, full_name)}
-          // value={store.contact[indexToEdit][full_name]}
-        ></input>
-
-        <label>Address</label>
-        <input
-          type="text"
-          placeholder={contacts[indexToEdit].address}
-          className="form-control m-2"
-          // onChange={(e) => handleEditInfo(e, full_name)}
-          // value={store.contact[indexToEdit][full_name]}
-        ></input> */}
+          label="Address"
+          onChangeInput={handleEditInput}
+          value={contactToEdit.address}
+        />
         <button className="btn btn-primary">Submit</button>
       </form>
 
