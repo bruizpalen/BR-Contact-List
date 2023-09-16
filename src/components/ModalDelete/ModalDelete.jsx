@@ -3,7 +3,7 @@ import classes from "./ModalDelete.module.css"; // Import the CSS module
 
 const ModalDelete = ({ title, content, onCancel, onConfirm }) => {
   return (
-    <div className="d-flex modelOver border justify-content-center {`${classes.modalOverlay} mb-2`}">
+    <div className="d-flex modelOver justify-content-center {`${classes.modalOverlay} mb-2`}">
       <div className="">
         <div className={classes.modal}>
           <div className={classes.modalHeader}>

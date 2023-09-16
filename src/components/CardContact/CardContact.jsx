@@ -15,9 +15,6 @@ const CardContact = ({
   const [modalOpen, setModalOpen] = useState(false);
   const [modalEditOpen, setEditModalOpen] = useState(false);
 
-  // const ctx = useAppContext();
-  // console.log("CardComponent", ctx);
-
   const handleOpenModal = (e) => {
     console.log("opening modal");
     setModalOpen(true);
@@ -44,33 +41,9 @@ const CardContact = ({
           onCancel={handleCloseEditModal}
           contactId={contactId}
           onConfirm={() => {
-            // actions.removeContactById({ id: contactId });
             handleCloseModal();
           }}
         />
-        //   <div className="d-flex flex-column justify-content-center align-items-center border p-2">
-        //     <p>Are you sure that you want to edit the contact?</p>
-        //     <div>
-        //       <Link to={`/edit/:${contactId}`}>
-        //         <button className="btn btn-success me-2">Confirm</button>
-        //       </Link>
-        //       <button
-        //         className="btn btn-danger"
-        //         onClick={() => handleCloseEditModal()}
-        //       >
-        //         Cancel
-        //       </button>
-        //     </div>
-        //     {/* <ModalDelete
-        //       title="Edit contact"
-        //       content="Are you sure that you want to edit this contact?"
-        //       onCancel={handleCloseEditModal}
-        //       onConfirm={() => {
-        //         <Link to={`/edit/:${contactId}`}></Link>;
-        //         handleCloseEditModal();
-        //       }}
-        //     /> */}
-        //   </div>
       )}
       {modalOpen && (
         <ModalDelete
@@ -107,7 +80,6 @@ const CardContact = ({
             </div>
           </div>
           <div className="col-md-2 pt-5  align-items-center d-flex flex-column">
-            {/* <Link to={`/edit/${contactId}`}> */}
             <button
               className="btn btn-success mb-2"
               onClick={(e) => handleOpenEditModal()}
@@ -115,11 +87,9 @@ const CardContact = ({
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
 
-            {/* </Link> */}
             <button
               className="btn btn-danger"
               onClick={(e) => handleOpenModal()}
-              // onClick={() => actions.removeContactById({ id: contactId })}
             >
               <i className="fa-solid fa-trash-can"></i>
             </button>

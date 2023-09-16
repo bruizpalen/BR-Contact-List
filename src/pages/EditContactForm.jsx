@@ -12,9 +12,6 @@ const EditContactForm = () => {
   const contacts = store.contacts;
   const { actions } = useAppContext();
 
-  // useEffect(() => {
-  //   actions.updateContactList();
-  // }, []);
   if (contacts.length === 0) {
     return <div>Loading</div>;
   }
